@@ -1,0 +1,28 @@
+# Sensitive data
+**/*secret*
+**/*password*
+**/*.key
+
+# Neovim cache
+nvim/.lazy.lua
+nvim/lazy-lock.json
+nvim/.luarc.json
+**/cache/
+**/*.log
+
+# Fish history and variables
+fish/fish_variables
+
+# Backup files
+*.bak
+*~
+*.swp
+*.tmp
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Hyprland logs
+hypr/hyprland.log
+EOF
