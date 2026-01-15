@@ -65,7 +65,7 @@
     "tooltip": false
   },
   "clock#3": {
-    "format": "{:%m-%d}",
+    "format": "{:%d-%m-%y}",
     "tooltip": false
   },
   "pulseaudio": {
