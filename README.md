@@ -72,9 +72,11 @@ paru -S \
 
 ### Python Development (LazyVim)
 ```bash
-sudo pacman -S python-pip python-pynvim
-pip install --user pyright ruff
+sudo pacman -S python-pynvim pyright ruff
 ```
+
+> **Note:** Do not use `pip install --user` on Arch-based distros — the system Python is externally managed (PEP 668).
+> Install Python tools via `pacman` or `pipx` instead.
 
 ## Installation
 
@@ -98,13 +100,12 @@ bash backup_config.sh
 ### 4. Deploy dotfiles
 ```bash
 cd ~/dotfiles
-stow -v -t ~/.config hypr waybar nvim fish wlogout
-```
 
-### 5. Install Claude Code agents (optional)
-```bash
-cd ~/dotfiles
-bash install-claude.sh
+# Packages without existing configs
+stow -v -t ~ claude dunst kitty nvim waybar wlogout wofi
+
+# Packages with existing config files — adopt them into the repo
+stow -v -t ~ --adopt fish hypr
 ```
 
 ### 6. Set wallpaper
@@ -211,28 +212,34 @@ Plugin configuration in `nvim/lua/plugins/` with support for Python, React, Mark
 | `Super + Shift + H/L` | Previous/next workspace |
 
 ## Structure
+
+Each package mirrors the target path from `~`, so GNU Stow creates symlinks in the right place.
+
 ```
 dotfiles/
-├── hypr/               # Hyprland configuration
-│   ├── hyprland.conf   #   Main config (look & feel, input, animations)
-│   ├── monitors.conf   #   Monitor setup
-│   ├── autostart.conf  #   Autostart applications
-│   ├── keywords.conf   #   Program variables
-│   ├── bindings.conf   #   Keybindings
-│   ├── colors.conf     #   Color scheme (Material Design tokens)
-│   ├── hypridle.conf   #   Idle daemon config
-│   ├── hyprlock.conf   #   Lock screen config
-│   ├── hyprpaper.conf  #   Wallpaper config
-│   └── scripts/        #   Helper scripts
-├── waybar/             # Waybar status bar
-├── nvim/               # LazyVim configuration
-├── fish/               # Fish shell configuration
-├── wlogout/            # wlogout power menu
-├── claude/             # Claude Code agent definitions
-│   └── agents/         #   Custom agent configs
-├── screenshots/        # Desktop screenshots
-├── backup_config.sh    # Config backup script
-├── install-claude.sh   # Claude agent installer
+├── hypr/.config/hypr/          # Hyprland configuration
+│   ├── hyprland.conf           #   Main config (look & feel, input, animations)
+│   ├── monitors.conf           #   Monitor setup
+│   ├── autostart.conf          #   Autostart applications
+│   ├── keywords.conf           #   Program variables
+│   ├── bindings.conf           #   Keybindings
+│   ├── colors.conf             #   Color scheme (Material Design tokens)
+│   ├── hypridle.conf           #   Idle daemon config
+│   ├── hyprlock.conf           #   Lock screen config
+│   ├── hyprpaper.conf          #   Wallpaper config
+│   └── scripts/                #   Helper scripts
+├── waybar/.config/waybar/      # Waybar status bar
+├── kitty/.config/kitty/        # Kitty terminal emulator
+├── wofi/.config/wofi/          # Wofi application launcher
+├── dunst/.config/dunst/        # Dunst notification daemon
+├── nvim/.config/nvim/          # LazyVim configuration
+├── fish/.config/fish/          # Fish shell configuration
+├── wlogout/.config/wlogout/    # wlogout power menu
+├── claude/.claude/             # Claude Code agent definitions
+│   └── agents/                 #   Custom agent configs
+├── screenshots/                # Desktop screenshots
+├── backup_config.sh            # Config backup script
+├── install-claude.sh           # Claude agent installer
 ├── .gitignore
 └── README.md
 ```
@@ -254,7 +261,7 @@ exec-once = /usr/lib/polkit-kde-authentication-agent-1
 
 ### LazyVim Python autocomplete not working
 ```bash
-pip install --user pyright ruff
+sudo pacman -S pyright ruff
 # Restart neovim
 ```
 

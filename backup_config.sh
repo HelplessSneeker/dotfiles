@@ -4,7 +4,7 @@ mkdir -p "$BACKUP_DIR/.config"
 
 # Move each config directory to backup
 cd ~/.config
-for dir in hypr waybar nvim fish wlogout; do
+for dir in hypr waybar nvim fish wlogout kitty wofi dunst; do
   if [ -d "$dir" ] && [ ! -L "$dir" ]; then
     echo "Backing up $dir"
     mv "$dir" "$BACKUP_DIR/.config/"
