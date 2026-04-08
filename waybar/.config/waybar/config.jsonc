@@ -34,6 +34,9 @@
     "disk",
     "custom/left-arrow-light",
     "custom/left-arrow-dark",
+    "bluetooth",
+    "custom/left-arrow-light",
+    "custom/left-arrow-dark",
     "tray"
   ],
   "custom/left-arrow-dark": {
@@ -111,6 +114,17 @@
     "interval": 5,
     "format": "Disk {percentage_used:2}%",
     "path": "/"
+  },
+  "bluetooth": {
+    "format": " {status}",
+    "format-connected": " {device_alias}",
+    "format-connected-battery": " {device_alias} {device_battery_percentage}%",
+    "format-disabled": "󰂲",
+    "format-off": "󰂲",
+    "tooltip-format": "{controller_alias}\t{controller_address}\n\n{num_connections} connected",
+    "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}",
+    "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
+    "on-click": "blueman-manager"
   },
   "tray": {
     "icon-size": 20

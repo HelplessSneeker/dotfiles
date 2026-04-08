@@ -73,3 +73,17 @@ window#waybar {
 #disk {
 	padding: 0 10px;
 }
+
+#bluetooth {
+    color: #7aa2f7;
+    padding: 0 8px;
+}
+
+#bluetooth.connected {
+    color: #9ece6a;
+}
+
+#bluetooth.disabled,
+#bluetooth.off {
+    color: #565f89;
+}

@@ -15,7 +15,7 @@ My personal Hyprland configuration for CachyOS, featuring a modern Wayland deskt
 - **wlogout** - Wayland logout menu
 - **Waybar** - Status bar with arrow-style modules
 - **Wofi** - Application launcher
-- **Dunst** - Notification daemon
+- **SwayNC** - Notification center with action buttons (Material Design 3 themed)
 - **LazyVim** - Neovim configuration with plugin management
 - **Fish Shell** - Modern shell (CachyOS config + nvm plugin)
 - **Kitty** - Terminal emulator
@@ -32,7 +32,7 @@ sudo pacman -S hyprland waybar hyprlock hyprpaper hypridle wlogout fish neovim k
 ```bash
 sudo pacman -S \
     wofi \               # Application launcher
-    dunst \              # Notification daemon
+    swaync \             # Notification center
     brightnessctl \      # Brightness control
     playerctl \          # Media player control
     wl-clipboard \       # Clipboard manager
@@ -102,7 +102,7 @@ bash backup_config.sh
 cd ~/dotfiles
 
 # Packages without existing configs
-stow -v -t ~ claude dunst kitty nvim waybar wlogout wofi
+stow -v -t ~ claude swaync kitty nvim waybar wlogout wofi
 
 # Packages with existing config files — adopt them into the repo
 stow -v -t ~ --adopt fish hypr
@@ -172,7 +172,7 @@ Plugin configuration in `nvim/lua/plugins/` with support for Python, React, Mark
 | `Super + V` | Toggle floating |
 | `Super + F` | Fullscreen |
 | `Super + Shift + P` | Pseudo-tile (dwindle) |
-| `Super + Shift + N` | Toggle split (dwindle) |
+| `Super + Shift + J` | Toggle split (dwindle) |
 | `Super + H/J/K/L` | Move focus (left/down/up/right) |
 | `Super + Mouse` | Move/resize windows |
 
@@ -190,6 +190,7 @@ Plugin configuration in `nvim/lua/plugins/` with support for Python, React, Mark
 | `Super + I` | Octopi (package manager) |
 | `Super + G` | Godot |
 | `Super + M` | YouTube Music |
+| `Super + Shift + N` | Toggle notification center |
 
 ### System
 | Key | Action |
@@ -231,7 +232,7 @@ dotfiles/
 ├── waybar/.config/waybar/      # Waybar status bar
 ├── kitty/.config/kitty/        # Kitty terminal emulator
 ├── wofi/.config/wofi/          # Wofi application launcher
-├── dunst/.config/dunst/        # Dunst notification daemon
+├── swaync/.config/swaync/      # SwayNC notification center
 ├── nvim/.config/nvim/          # LazyVim configuration
 ├── fish/.config/fish/          # Fish shell configuration
 ├── wlogout/.config/wlogout/    # wlogout power menu
